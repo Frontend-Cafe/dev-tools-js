@@ -6,6 +6,7 @@
     "serve": "vite preview"
   },
   "devDependencies": {
+    "prettier": "2.3.1",
     "vite": "^2.3.8"
   }
 }
