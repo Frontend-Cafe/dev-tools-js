@@ -1,34 +1,39 @@
 import vaccinesData from '../assets/covid.json'
 
 /**
- * @param {{
+ * @typedef {{
+ *   jurisdiccion_codigo_indec: string
  *   jurisdiccion_nombre: string
  *   vacuna_nombre: string
  *   primera_dosis_cantidad: string
  *   segunda_dosis_cantidad: string
- * }} vaccineData
+ * }} VaccineData
+ */
+
+/** @var {VaccineData}[] vaccinesData */
+
+/**
+ * @param {VaccineData} vaccineData
  */
 function vaccineToHtml(vaccineData) {
   const {
-    vacuna_nombre,
+    jurisdiccion_codigo_indec,
     jurisdiccion_nombre,
+    vacuna_nombre,
     primera_dosis_cantidad,
     segunda_dosis_cantidad,
   } = vaccineData
 
-  const div = document.createElement('div')
-  const pNombre = document.createElement('p')
-  pNombre.innerText = vacuna_nombre
-  pNombre.classList.add('vacuna-nombre')
+  const p = document.createElement('p')
+  p.textContent = `
+    cod_juridiccion: ${jurisdiccion_codigo_indec}
+    jurisdiccion: ${jurisdiccion_nombre}
+    vacuna: ${vacuna_nombre}
+    primera_dosis: ${primera_dosis_cantidad}
+    segunda_dosis: ${segunda_dosis_cantidad}
+  `
 
-  const pJurisdiccion = document.createElement('p')
-  pJurisdiccion.innerText = jurisdiccion_nombre
-  pJurisdiccion.classList.add('vacuna-jurisdiccion')
-
-  div.appendChild(pNombre)
-  div.appendChild(pJurisdiccion)
-
-  return div
+  return p
 }
 
 const html = vaccinesData.map(vaccineToHtml)
