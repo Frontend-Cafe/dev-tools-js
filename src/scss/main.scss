@@ -1,3 +1,7 @@
+@use './base';
+@use './layout';
+
+// css default de Vite para comprobar que funciona
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
